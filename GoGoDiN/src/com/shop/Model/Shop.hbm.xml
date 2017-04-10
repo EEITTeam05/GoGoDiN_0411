@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.shop.Model.ShopVO" table="ShopTable" >
+        
+        <id name="ShopId" column="ShopId">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="ShopAccount" column="ShopAccount" />
+        <property name="ShopPswd" column="ShopPswd" />
+        <property name="ShopName" column="ShopName" />
+        <property name="ShopIdd" column="ShopIdd" />
+        <property name="ShopTel" column="ShopTel" />
+        <property name="ShopEmail" column="ShopEmail" />
+        <property name="SlineId" column="SlineId" />
+        
+    </class>
+</hibernate-mapping>

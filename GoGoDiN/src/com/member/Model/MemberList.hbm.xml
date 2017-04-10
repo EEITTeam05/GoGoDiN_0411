@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.member.Model.MemberListVO" table="MemberList" >
+        
+        <id name="MemId" column="MemId">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="MemAccount" column="MemAccount" />
+        <property name="MemPswd" column="MemPswd" />
+        <property name="MemName" column="MemName" />
+        <property name="Sex" column="Sex" />
+        <property name="Birthday" column="Birthday" />
+        <property name="Email" column="Email" />
+        <property name="MlineId" column="MlineId" />
+        <property name="MemTel" column="MemTel" />
+        <property name="MemAddr" column="MemAddr" />     
+        <property name="MemberImage" column="MemberImage" />     
+        <property name="fileName" column="fileName" />     
+
+        
+        
+    </class>
+</hibernate-mapping>

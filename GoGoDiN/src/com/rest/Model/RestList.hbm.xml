@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.rest.Model.RestVO" table="RestTable" >
+        
+        <id name="RestId" column="RestId">
+            <generator class="identity"/>
+        </id>
+        <property name="RestName" column="RestName" />
+        <property name="RestTel" column="RestTel" />
+        <property name="Restaddr" column="Restaddr" />
+        <property name="Ein" column="EIN" />
+        <property name="RestStart" column="RestStart" />
+        <property name="RestEnd" column="RestEnd" />
+        <property name="RestRate" column="RestRate" />
+        <property name="RestNum" column="RestNum" />
+        <property name="RestImage" column="RestImage" />     
+        <property name="fileName" column="fileName" />     
+        
+    </class>
+</hibernate-mapping>

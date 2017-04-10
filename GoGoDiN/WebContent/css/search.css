@@ -1,0 +1,11 @@
+a:hover{
+	text-decoration: none;
+} 
+.glyphicon.glyphicon-heart{
+color: red;
+margin-right: 3px;
+}
+.mb-3{
+	margin:0 !important;
+	padding:auto !important;
+}

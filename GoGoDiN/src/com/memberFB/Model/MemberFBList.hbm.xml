@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.memberFB.Model.MemberFBListVO" table="MemberFBList" >
+        
+        <id name="MemId" column="MemId">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="account" column="account" />
+        <property name="password" column="password" />
+        <property name="lastname" column="lastname" />
+        <property name="firstname" column="firstname" />
+        <property name="email" column="email" />
+        <property name="pswd" column="pswd" />
+        <property name="gender" column="gender" />
+        <property name="picture" column="picture" />
+        
+
+        
+        
+    </class>
+</hibernate-mapping>

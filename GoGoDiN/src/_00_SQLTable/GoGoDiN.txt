@@ -1,0 +1,187 @@
+
+
+USE            GoGoDiN
+
+Drop Table     Report
+
+DROP TABLE     OrderTable
+
+DROP TABLE     ShopTable
+
+DROP TABLE     RestTable
+
+DROP TABLE     MemberQuestion
+
+DROP TABLE     MemberList
+
+CREATE TABLE MemberList (
+
+     MemId              INT PRIMARY KEY IDENTITY(1,1),
+
+     MemAccount         VARCHAR(20),
+
+     MemPswd            VARCHAR(20),
+
+     MemName            VARCHAR(20),
+
+     Sex                INT not null,
+
+     Birthday           DATE,
+
+     Email              VARCHAR(25),
+
+     MLineId            VARCHAR(20),
+
+     MemTel             VARCHAR(20),
+
+     MemAddr            VARCHAR(30),
+
+     MemberImage        VARBINARY(MAX),
+
+     fileName           VARCHAR(20))
+
+CREATE TABLE ShopTable
+
+(
+
+     ShopId                   INT PRIMARY KEY IDENTITY(1,1),
+
+     ShopAccount              VARCHAR(10),
+
+     ShopPswd            VARCHAR(12),
+
+     ShopName            VARCHAR(8),
+
+     ShopIdd                  VARCHAR(10),
+
+     ShopTel                  VARCHAR(10),
+
+     ShopEmail           VARCHAR(30),
+
+     SLineId                  VARCHAR(20)
+
+)
+
+CREATE TABLE OrderTable(
+
+    OrderNum             INT PRIMARY KEY IDENTITY(1,1) not null,
+
+    MemberId             INT references MemberList (MemId),
+
+    ShopId                    INT references ShopTable(ShopId) ,
+
+    OrderTime            dateTime null,
+
+    PNum                 INT null,
+
+    BidTime                   dateTime null
+
+)
+
+CREATE TABLE RestTable
+
+(
+
+     RestId                   INT PRIMARY KEY IDENTITY(1,1),
+
+     RestName            VARCHAR(12),
+
+     RestTel                  VARCHAR(10),
+
+     Restaddr            VARCHAR(50),
+
+     EIN                      INT,
+
+     RestStart           DATE,
+
+     RestEnd                  DATE,
+
+     RestRate            INT,
+
+     RestNum                  INT,
+
+     RestImage              VARBINARY(MAX),
+
+     fileName            VARCHAR(20)
+
+)
+
+INSERT INTO MemberList VALUES ('snoopy','123','史小比',1,'1990-05-26','abc@yahoo.com.tw','abc123','02-0494582','大安區',(SELECT jspdb.dbo.eMember.memberImage FROM jspdb.dbo.eMember WHERE jspdb.dbo.eMember.seqNo =2),'snoopy.jpg');
+
+INSERT INTO MemberList VALUES ( 'kitty','456','凱小蒂',0,'1986-03-13','def@yahoo.com.tw','abc456','02-8825252','中山區',(SELECT jspdb.dbo.eMember.memberImage FROM jspdb.dbo.eMember WHERE jspdb.dbo.eMember.seqNo =1),'kitty.jpg');
+
+INSERT INTO MemberList VALUES ( 'micky','789','米小奇',1,'1992-07-01','ghi@yahoo.com.tw','abc789','02-4532789','信義區',(SELECT jspdb.dbo.eMember.memberImage FROM jspdb.dbo.eMember WHERE jspdb.dbo.eMember.seqNo =3),'micky.jpg');
+
+INSERT INTO ShopTable
+
+VALUES
+
+('Ttu423','Ttu423','克萊兒','1234567890','28965475','gikig@gmail.com','hollo'),
+
+('Ttu427','Ttu443','唐娜','1234567890','25465856','giqqig@gmail.com','world'),
+
+('Ttu623','Ttu693','奧古斯特','1234567890','26547852','jkkig@gmail.com','ayaya')
+
+INSERT INTO RestTable VALUES('莉莉','23657894','台北市大安區復興南路二段235號科技大樓站','26325356','2017/03/28','2017/03/29','5','50',(SELECT jspdb.dbo.eMember.memberImage FROM jspdb.dbo.eMember WHERE jspdb.dbo.eMember.seqNo =2),'snoopy.jpg');
+
+INSERT INTO RestTable VALUES('茉莉','23657894','台北市大安區復興南路二段235號科技大樓站','24125632','2017/03/28','2017/03/29','5','50',(SELECT jspdb.dbo.eMember.memberImage FROM jspdb.dbo.eMember WHERE jspdb.dbo.eMember.seqNo =1),'kitty.jpg');
+
+INSERT INTO RestTable VALUES('茱莉','23657894','台北市大安區復興南路二段235號科技大樓站','12546856','2017/03/28','2017/03/29','5','50',(SELECT jspdb.dbo.eMember.memberImage FROM jspdb.dbo.eMember WHERE jspdb.dbo.eMember.seqNo =3),'micky.jpg');
+
+create table MemberQuestion(
+
+MemberId INT references MemberList (MemId),
+
+MemName  VARCHAR(20),
+
+MemberOpinion varchar(60),
+
+MemberImage   VARBINARY(MAX),
+
+DateTime datetime,
+
+)
+
+INSERT INTO MemberQuestion VALUES(1,'snoopy','客服小姐聲音好可愛喔...可以加賴嗎..',(SELECT jspdb.dbo.eMember.memberImage FROM jspdb.dbo.eMember WHERE jspdb.dbo.eMember.seqNo =1),'2017-02-26 12:56:31.247')
+
+INSERT INTO MemberQuestion VALUES(2,'kitty','訂個餐廳一直累個是怎樣啦!!',(SELECT jspdb.dbo.eMember.memberImage FROM jspdb.dbo.eMember WHERE jspdb.dbo.eMember.seqNo =2),'2017-02-28 12:56:31.247')
+
+INSERT INTO MemberQuestion VALUES(3,'micky','請問客服小姐平常都去哪間餐廳呢?! 我要訂那一間',(SELECT jspdb.dbo.eMember.memberImage FROM jspdb.dbo.eMember WHERE jspdb.dbo.eMember.seqNo =3),'2017-03-29 12:56:31.100')
+
+create table Report(
+
+MemberId INT references MemberList (MemId),
+
+RestId int references RestTable (RestId),
+
+ReportOption int ,
+
+ReportText varchar(400),
+
+DateTime datetime,
+
+)
+
+
+
+
+Insert into Report values (1,1,5,'ZZ 貴又難吃','2017-02-28 12:56:31.247');
+
+Insert into Report values (2,1,1,'廣告不實','2017-03-1 13:56:31.247');
+
+Insert into Report values (3,2,1,'重複刊登','2017-03-11 17:56:31.247');
+
+
+
+
+SELECT * FROM MemberList
+
+SELECT * FROM OrderTable
+
+SELECT * FROM ShopTable
+
+SELECT * FROM RestTable
+
+SELECT * FROM MemberQuestion
+
+SELECT * FROM Report
