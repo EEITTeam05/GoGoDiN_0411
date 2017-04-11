@@ -154,17 +154,14 @@ public class ShopRegisterServlet extends HttpServlet {
 				RegisterService_interface rs = new RegisterServiceDAO();
 				if (rs.idExists(Account)) {
 					errorMsg.put("errorIDDup", "此帳號已存在，請選擇新帳號");
+					RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+					rd.forward(request, response);
+					return;
 				} else {
 					ShopService shopServ = new ShopService();
 					shopServ.addShop(Account, password, name,Idd, tel,  email, LineID);
 					response.sendRedirect("../index.jsp");
 					session.setAttribute("LoginOK", shopServ);
-					return;
-				}
-				if (!errorMsg.isEmpty()) {
-					// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-					RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
-					rd.forward(request, response);
 					return;
 				}
 			} catch (Exception e) {

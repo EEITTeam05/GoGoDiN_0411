@@ -135,6 +135,9 @@ public class RegisterServlet extends HttpServlet {
 			RegisterService_interface rs = new RegisterServiceDAO();
 			if (rs.idExists(Account)) {
 				errorMsg.put("errorIDDup", "此帳號已存在，請選擇新帳號");
+				RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+				rd.forward(request, response);
+				return;
 			} else {
 				MemberService mb = new MemberService();
 				MemberListVO ml = mb.addMember(Account, password, name, sex, bday, email, LineID, tel, address, is,
@@ -151,7 +154,7 @@ public class RegisterServlet extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
-
+		
 	}
 
 	public static String getFileName(final Part part) {

@@ -166,7 +166,7 @@ public class MemberServlet extends HttpServlet {
 				// 修改完成，準備轉交
 				session.setAttribute("LoginOK", memVO);
 				loginService lsc = new loginService();
-				lsc.populateMemberList();
+				lsc.updateMember(memVO);
 				String url = "/Member/MemberList.jsp";
 				RequestDispatcher rd = request.getRequestDispatcher(url);
 				rd.forward(request, response);

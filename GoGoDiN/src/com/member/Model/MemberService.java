@@ -51,9 +51,6 @@ public class MemberService {
 			String Email, String MlineId, String MemTel, String MemAddr, Blob photo, String fileName) throws SQLException {
 
 		MemberListVO memVO = new MemberListVO();
-		
-		
-
 		memVO.setMemId(MemId);
 		memVO.setMemAccount(MemAccount);
 		memVO.setMemPswd(MemPswd);
