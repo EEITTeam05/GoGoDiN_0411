@@ -8,7 +8,7 @@
         
         <!-- 連線池c3p0設定  192.168.0.104-->
 		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-		<property name="hibernate.connection.url">jdbc:sqlserver://192.168.1.43:1433;DatabaseName=GoGoDiN</property>
+		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=GoGoDiN</property>
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">sa123456</property>       
 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
